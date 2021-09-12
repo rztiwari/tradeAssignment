@@ -1,0 +1,9 @@
+{
+    "data": [
+        {"trade_id":"T1","version":1, "counter_party_id": "CP-1", "book_id": "B1", "maturity_date": "12/09/2021", "created_date": "08/09/2021", "expired": "N"}, 
+        {"trade_id":"T2","version":2, "counter_party_id": "CP-2", "book_id": "B2", "maturity_date": "14/09/2021", "created_date": "07/09/2021", "expired": "N"},
+        {"trade_id":"T3","version":1, "counter_party_id": "CP-3", "book_id": "B2", "maturity_date": "10/09/2021", "created_date": "06/09/2021", "expired": "Y"},
+        {"trade_id":"T4","version":2, "counter_party_id": "CP-2", "book_id": "B3", "maturity_date": "13/09/2021", "created_date": "10/09/2021", "expired": "N"},
+        {"trade_id":"T5","version":2, "counter_party_id": "CP-2", "book_id": "B2", "maturity_date": "12/09/2021", "created_date": "10/09/2021", "expired": "N"}
+    ]
+}
