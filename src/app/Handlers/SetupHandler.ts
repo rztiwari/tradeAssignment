@@ -3,10 +3,10 @@ import { InitialDataSetup } from "../Data/InitialDataSetup";
 export default class SetupController {
 
     private initialDataSetup: InitialDataSetup;
-    constructor() {
-        this.initialDataSetup = new InitialDataSetup();
+    constructor(initialDataSetup: InitialDataSetup = new InitialDataSetup()) {
+        this.initialDataSetup = initialDataSetup;
     }
-    public setup() {
-        return this.initialDataSetup.createDatabase();
+    public async setup() {
+        return await this.initialDataSetup.createDatabase();
     };
 }
