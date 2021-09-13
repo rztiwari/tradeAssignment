@@ -9,7 +9,7 @@ describe('test the DataAccess class', () => {
     };
 
     mockDBNSQL.query
-        .mockReturnValueOnce({
+        .mockReturnValue({
             exec: jest.fn().mockReturnValueOnce({ test: 'testing' }),
             where: jest.fn().mockReturnValueOnce({
                 exec: jest.fn()
@@ -62,5 +62,18 @@ describe('test the DataAccess class', () => {
 
     test('it should throw an exception when no action provided', async () => {
         await expect(dataAcces.dbActions('', { test: 'T1' })).rejects.toThrow(`No or incorrect action provided`);
+    });
+
+    test('it is able to insert/update all items', async () => {
+        const data = await dataAcces.dbActions(Const.INSERT_ITEMS, [{ trade_id: 'T1' }]);
+        expect(data).toEqual('Data updated');
+    });
+
+    test('it should throw an exception when no parameter provided', async () => {
+        await expect(dataAcces.dbActions(Const.INSERT_ITEMS, null)).rejects.toThrow(`Data can't be updated`);
+    });
+
+    test('it should throw an exception when parameter provided is not an array', async () => {
+        await expect(dataAcces.dbActions(Const.INSERT_ITEMS, { trade_id: 'T1' })).rejects.toThrow(`Data can't be updated`);
     });
 });
