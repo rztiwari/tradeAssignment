@@ -10,9 +10,11 @@ const port = 3000;
 // `app.use(express.json())` **before** your route handlers!
 app.use(express.json());
 
+// Creates the server and initizes the date change actions.
 export class Server {
     private date: number | undefined;
 
+    // Date change action initialized.
     private checkTime() {
         const newDate = new Date().getDate();
         if (this.date !== newDate) {

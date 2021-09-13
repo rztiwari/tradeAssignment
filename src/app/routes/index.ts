@@ -3,6 +3,7 @@ import { Const } from "../const";
 import DataAccessController from "../Controllers/DataAccessController";
 import { InsertRecordHandler } from "../Handlers/InsertRecordHandler";
 
+// All the routes for the project defined here.
 /* istanbul ignore next */
 export const register = (app: express.Application) => {
 

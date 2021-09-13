@@ -3,6 +3,9 @@ import { InanoSQLInstance, nSQL } from "@nano-sql/core";
 import { Const } from '../const';
 import * as initialData from './initialItems.json';
 
+/** Helper Class to setup intial data into the database 
+ * It also creates the database and the table.
+ */
 export class InitialDataSetup {
     private defaultNSQL: InanoSQLInstance;
     private dbNSQL: InanoSQLInstance;
@@ -15,6 +18,7 @@ export class InitialDataSetup {
         this.sqLite = sqLite;
     }
 
+    /* istanbul ignore next */
     private async insert() {
         await this.dbNSQL.query("upsert", initialData.data).exec();
     }
@@ -31,6 +35,7 @@ export class InitialDataSetup {
         return dataBases;
     }
 
+    /* istanbul ignore next */
     private async createDB() {
         const params = {
             id: Const.DATABASE_ID,
@@ -45,16 +50,23 @@ export class InitialDataSetup {
         await this.defaultNSQL.createDatabase(params);
     }
 
+    /** Function exposed to create the data base 
+     * It also sets up the sample data to start with.
+     */
     public async createDatabase(): Promise<any> {
         return new Promise<any>(async (resolve, reject) => {
             try {
                 const dataBases = await this.listDbs();
                 if (!dataBases || dataBases.length == 0) {
+                    // Create the DB
                     await this.createDB();
+                    // Insert the data into the database
                     await this.insert();
+                    // Select the data from the database and resolve with the same.
                     const data = await this.select();
                     resolve(data);
                 } else {
+                    // Throw exception when DB already exists.
                     reject(new Error('Database already exists'));
                 }
             } catch (e) {

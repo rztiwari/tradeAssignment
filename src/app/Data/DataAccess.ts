@@ -2,9 +2,11 @@ import { InanoSQLInstance, nSQL } from "@nano-sql/core";
 import { Const } from '../const';
 import { Trade } from "../Models/TradeModel";
 
+/** Helper class for all DB actions*/
 export class DataAccess {
     private dbNSQL: InanoSQLInstance;
 
+    /* istanbul ignore next */
     constructor(dbNSQL = nSQL(Const.TABLE_NAME)) {
         this.dbNSQL = dbNSQL;
     }
@@ -29,6 +31,7 @@ export class DataAccess {
         return data;
     }
 
+    /** Public function exposed to services for all DB actions */
     public async dbActions(actionName: string, params: any): Promise<any> {
         return new Promise<any>(async (resolve, reject) => {
             try {

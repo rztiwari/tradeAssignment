@@ -3,6 +3,11 @@ import DataAccessController from "../Controllers/DataAccessController";
 import { Trade } from "../Models/TradeModel";
 import DateUtil from "../Utils/DateUtil";
 
+/** This class does batch update of the data, when,
+ * the date change has been triggered from the server.
+ * It check for all the cases where maturity date is lower that today
+ * It then updates the expiry flag for all the records.
+ */
 export class DateChangeHandler {
 
     private dataAccessController: DataAccessController;
@@ -21,6 +26,7 @@ export class DateChangeHandler {
         }
     }
 
+    // Main helper fuction.
     public async checkRecords() {
         const items: Array<Trade> = await this.getItems();
         const itemsToUpdate: Array<Trade> = [];

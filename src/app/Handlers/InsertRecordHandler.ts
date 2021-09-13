@@ -3,6 +3,12 @@ import DataAccessController from "../Controllers/DataAccessController";
 import { Trade } from "../Models/TradeModel";
 import DateUtil from "../Utils/DateUtil";
 
+/** This class does the validation of the data before inserting into the database.
+ * It validates for:
+ * 1. The version of the trade should be >= to an existing trade if present.
+ * 2. Insert if trade is not present.
+ * 3. If the maturity date is less than today don't insert.
+ */
 export class InsertRecordHandler {
 
     private dataAccessController: DataAccessController;
@@ -16,6 +22,7 @@ export class InsertRecordHandler {
         return this.dataAccessController.dataAction(Const.GET_ITEM_BY_TRADE_ID, {trade_id});
     }
 
+    // All Validation logic
     public async insertRecord(data: Trade){
         
         if(data && data.trade_id) {

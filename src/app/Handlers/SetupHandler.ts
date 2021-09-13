@@ -1,4 +1,5 @@
 import { InitialDataSetup } from "../Data/InitialDataSetup";
+// Initial data setup handler
 /* istanbul ignore next */
 export default class SetupController {
 
