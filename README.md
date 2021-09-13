@@ -1,7 +1,7 @@
 # Trade Assignment
 
 ## Steps to setup the workspace:
-1. Make sure to have node version > 8 installed on the machine.
+1. Make sure to have node **version > 8** installed on the machine. The node installation can be found in the [guide](https://nodejs.org/en/download/).
 2. Clone/ Download the code from the repository (Refer [git clone](https://github.com/git-guides/git-clone) command)
 3. Install the code base using the command: **npm install**
 4. The code runs on a in-memory database (nano-SQL on SQLLite version).
@@ -18,4 +18,3 @@
    
 ## Sample Test case coverage report ##
 ![image](https://user-images.githubusercontent.com/1829280/133018530-c0851162-1189-47a8-b7d3-db712808a15b.png)
-
