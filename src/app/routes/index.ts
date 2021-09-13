@@ -1,20 +1,10 @@
 import * as express from "express";
 import { Const } from "../const";
 import DataAccessController from "../Controllers/DataAccessController";
-import SetupController from "../Controllers/SetupController";
 import { InsertRecordHandler } from "../Handlers/InsertRecordHandler";
 
 /* istanbul ignore next */
 export const register = (app: express.Application) => {
-
-    app.get("/setup", async (req: any, res) => {
-        try {
-            const data = await new SetupController().setup();
-            res.send(data);
-        } catch (e) {
-            res.send(e.message);
-        }
-    });
 
     app.post("/insertItem", async (req: any, res) => {
         try {

@@ -1,4 +1,5 @@
 import express from "express";
+import SetupHandler from "../Handlers/SetupHandler";
 import { DateChangeHandler } from "../Handlers/DateChangeHandler";
 import * as routes from '../routes';
 
@@ -22,10 +23,15 @@ export class Server {
         }
     }
 
+    private async setupDatabase() {
+        const data = await new SetupHandler().setup();
+    }
+
     public startServer() {
         // Configure routes
         routes.register(app);
         app.listen(port, () => {
+            this.setupDatabase();
             this.date = new Date().getDate();
             setInterval(this.checkTime, 20000);
             console.log(`server started at http://localhost:${port}`);
